@@ -1,26 +1,28 @@
 import { useState, useRef, useEffect } from 'react';
 import Head from 'next/head';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from 'next/router';
+import { GetServerSideProps } from 'next';
+import { getMessages } from 'next-intl/server';
 
 import TrailerModal from '../components/TrailerModal';
 
 export default function Home() {
   const [trailerModalOpen, setTrailerModalOpen] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const { t } = useTranslation('common');
+  const t = useTranslations('');
   const router = useRouter();
+  const locale = useLocale();
   
   // Initialize currentLanguage based on router locale
   const [currentLanguage, setCurrentLanguage] = useState<'EN' | 'JP'>(() => {
-    return router.locale === 'ja' ? 'JP' : 'EN';
+    return locale === 'ja' ? 'JP' : 'EN';
   });
 
   // Update currentLanguage when router locale changes
   useEffect(() => {
-    setCurrentLanguage(router.locale === 'ja' ? 'JP' : 'EN');
-  }, [router.locale]);
+    setCurrentLanguage(locale === 'ja' ? 'JP' : 'EN');
+  }, [locale]);
   
   // Get translated chapters data
   const getChaptersData = () => [
@@ -645,10 +647,12 @@ export default function Home() {
   );
 }
 
-export async function getServerSideProps({ locale }: { locale: string }) {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+  const messages = await getMessages({ locale: locale || 'en' });
+  
   return {
     props: {
-      ...(await serverSideTranslations(locale || 'en', ['common'])),
+      messages,
     },
   };
-}
+};

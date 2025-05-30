@@ -1,7 +1,8 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Rubik } from 'next/font/google';
-import { appWithTranslation } from 'next-i18next';
+import { NextIntlClientProvider } from 'next-intl';
+import { useRouter } from 'next/router';
 
 // Initialize the Rubik font
 const rubik = Rubik({
@@ -12,11 +13,18 @@ const rubik = Rubik({
 });
 
 function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  
   return (
-    <main className={`${rubik.variable}`}>
-      <Component {...pageProps} />
-    </main>
+    <NextIntlClientProvider
+      locale={router.locale || 'en'}
+      messages={pageProps.messages || {}}
+    >
+      <main className={`${rubik.variable}`}>
+        <Component {...pageProps} />
+      </main>
+    </NextIntlClientProvider>
   );
 }
 
-export default appWithTranslation(App);
+export default App;
