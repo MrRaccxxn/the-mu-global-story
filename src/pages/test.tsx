@@ -1,16 +1,14 @@
 import React from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
-import { GetServerSideProps } from 'next';
-import { getMessages } from 'next-intl/server';
 
 export default function TestPage() {
-  const t = useTranslations('');
+  const { t, i18n } = useTranslation('common');
   const router = useRouter();
-  const locale = useLocale();
 
   const handleLanguageSwitch = () => {
-    const newLocale = locale === 'en' ? 'ja' : 'en';
+    const newLocale = router.locale === 'en' ? 'ja' : 'en';
     router.push(router.asPath, router.asPath, { locale: newLocale });
   };
 
@@ -18,15 +16,15 @@ export default function TestPage() {
     <div className="min-h-screen bg-blue-500 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md">
         <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          next-intl Test Page
+          next-i18next Test Page
         </h1>
         
         <div className="space-y-4 text-sm">
           <div>
-            <strong>Current Locale:</strong> {locale}
+            <strong>Current Locale:</strong> {router.locale}
           </div>
           <div>
-            <strong>Router Locale:</strong> {router.locale}
+            <strong>i18n Language:</strong> {i18n.language}
           </div>
           <div>
             <strong>Test Translation:</strong> {t('hero.mainTitle')}
@@ -40,19 +38,17 @@ export default function TestPage() {
           onClick={handleLanguageSwitch}
           className="mt-6 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
         >
-          Switch to {locale === 'en' ? 'Japanese' : 'English'}
+          Switch to {router.locale === 'en' ? 'Japanese' : 'English'}
         </button>
       </div>
     </div>
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
-  const messages = await getMessages({ locale: locale || 'en' });
-  
+export const getServerSideProps = async ({ locale }: { locale: string }) => {
   return {
     props: {
-      messages,
+      ...(await serverSideTranslations(locale, ['common'])),
     },
   };
 }; 
