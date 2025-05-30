@@ -1,20 +1,3 @@
 {
-  "trailingSlash": true,
-  "rewrites": [
-    {
-      "source": "/ja/(.*)",
-      "destination": "/ja/$1"
-    }
-  ],
-  "functions": {
-    "src/pages/**/*.tsx": {
-      "includeFiles": "public/locales/**"
-    }
-  },
-  "routes": [
-    {
-      "src": "/locales/(.*)",
-      "dest": "/public/locales/$1"
-    }
-  ]
+  "trailingSlash": true
 } 
