@@ -1,3 +1,4 @@
+// Simple next-i18next configuration
 module.exports = {
   i18n: {
     defaultLocale: 'en',
@@ -7,8 +8,4 @@ module.exports = {
   react: {
     useSuspense: false,
   },
-  interpolation: {
-    escapeValue: false,
-  },
-  reloadOnPrerender: process.env.NODE_ENV === 'development',
 }; 

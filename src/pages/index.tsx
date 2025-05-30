@@ -8,10 +8,19 @@ import TrailerModal from '../components/TrailerModal';
 
 export default function Home() {
   const [trailerModalOpen, setTrailerModalOpen] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState<'EN' | 'JP'>('EN');
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation('common');
   const router = useRouter();
+  
+  // Initialize currentLanguage based on router locale
+  const [currentLanguage, setCurrentLanguage] = useState<'EN' | 'JP'>(() => {
+    return router.locale === 'ja' ? 'JP' : 'EN';
+  });
+
+  // Update currentLanguage when router locale changes
+  useEffect(() => {
+    setCurrentLanguage(router.locale === 'ja' ? 'JP' : 'EN');
+  }, [router.locale]);
   
   // Get translated chapters data
   const getChaptersData = () => [
@@ -639,7 +648,7 @@ export default function Home() {
 export async function getServerSideProps({ locale }: { locale: string }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale || 'en', ['common'])),
     },
   };
 }
