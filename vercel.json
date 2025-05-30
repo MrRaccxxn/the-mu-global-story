@@ -1,0 +1,9 @@
+{
+  "trailingSlash": true,
+  "rewrites": [
+    {
+      "source": "/ja/(.*)",
+      "destination": "/ja/$1"
+    }
+  ]
+} 
