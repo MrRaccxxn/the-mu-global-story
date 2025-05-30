@@ -81,7 +81,6 @@ const Hero = ({ onOpenTrailer }: HeroProps) => {
                   <div className="w-32 h-32 bg-primary rounded-full flex items-center justify-center text-white text-center p-6 mb-6">
                     <div className="text-xs leading-tight">
                       <div className="font-medium mb-2">What is the biggest story in technology today?</div>
-                      <div className="text-[10px] opacity-80">— Documentary Team</div>
                     </div>
                   </div>
                   <div className="absolute -bottom-2 left-16 w-6 h-6 border-2 border-primary rounded-full bg-white flex items-center justify-center">

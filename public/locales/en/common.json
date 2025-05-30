@@ -10,7 +10,6 @@
   },
   "hero": {
     "quote": "What is the biggest story in technology today?",
-    "quoteAuthor": "— Documentary Team",
     "introText1": "Blockchain technology emerged through various economic and financial crises. A revolutionary idea that has evolved into something that might fundamentally transform our understanding of digital ownership, decentralized governance, and global connectivity.",
     "introText2": "Perhaps this will remain a transformative period where one crucial innovation becomes the foundation for the next era of human interaction with technology.",
     "fourEpisodes": "Four Episodes",
@@ -79,10 +78,10 @@
     "title": "Ethereum: A Global Story",
     "description": "A documentary miniseries exploring Ethereum's transformative impact on technology and society, premiering at Expo 2025 Osaka.",
     "premiere": "Premiere",
-    "expoDetails": "Expo 2025 Osaka\nApril 13 - October 13, 2025",
+    "expoDetails": "Expo 2025 Osaka\nMay 12 - 18, 2025",
     "stayConnected": "Stay Connected",
     "scrollToExplore": "Scroll to explore",
-    "expoDate": "Expo 2025 Osaka / April 13 - October 13, 2025"
+    "expoDate": "Expo 2025 Osaka / May 12 - 18, 2025"
   },
   "video": {
     "liveBlockchain": "LIVE: Blockchain Network",

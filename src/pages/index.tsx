@@ -207,9 +207,9 @@ export default function Home() {
             <div className="absolute inset-y-0 right-0 w-px bg-gray-200" />
             
             {/* Vertical Navigation */}
-            <div className="flex flex-col items-center justify-center h-full space-y-20">
+            <div className="flex flex-col items-center justify-center h-full space-y-32">
               {/* Documentary Label */}
-              <div className="relative w-16 h-16 flex items-center justify-center">
+              <div className="relative w-20 h-24 flex items-center justify-center">
                 <div 
                   className="transform -rotate-90 origin-center whitespace-nowrap cursor-default"
                   style={{ transformOrigin: 'center center' }}
@@ -221,7 +221,7 @@ export default function Home() {
               </div>
               
               {/* About Project Link */}
-              <div className="relative w-16 h-16 flex items-center justify-center">
+              <div className="relative w-20 h-24 flex items-center justify-center">
                 <button 
                   className="transform -rotate-90 origin-center whitespace-nowrap cursor-pointer hover:text-primary transition-colors"
                   style={{ transformOrigin: 'center center' }}
@@ -240,7 +240,7 @@ export default function Home() {
               </div>
               
               {/* Language Switcher */}
-              <div className="relative w-16 h-16 flex items-center justify-center">
+              <div className="relative w-20 h-20 flex items-center justify-center">
                 <button 
                   className="transform -rotate-90 origin-center whitespace-nowrap cursor-pointer hover:text-primary transition-colors"
                   style={{ transformOrigin: 'center center' }}
@@ -271,13 +271,6 @@ export default function Home() {
             <div className="absolute bottom-8 space-y-4">
               <button 
                 className="w-8 h-8 border border-gray-300 rounded-full flex items-center justify-center text-xs text-gray-500 hover:bg-primary hover:border-primary hover:text-white transition-colors cursor-pointer"
-                title="Follow on Facebook"
-                onClick={() => window.open('https://facebook.com', '_blank')}
-              >
-                f
-              </button>
-              <button 
-                className="w-8 h-8 border border-gray-300 rounded-full flex items-center justify-center text-xs text-gray-500 hover:bg-primary hover:border-primary hover:text-white transition-colors cursor-pointer"
                 title="Follow on Twitter"
                 onClick={() => window.open('https://twitter.com', '_blank')}
               >
@@ -299,19 +292,19 @@ export default function Home() {
               
               {/* Red Accent Circle with Quote */}
               <div className="relative mb-12">
-                <div className="w-32 h-32 bg-primary rounded-full flex items-center justify-center text-white text-center p-6 mb-6">
+                <div className="w-32 h-32 bg-primary rounded-full flex items-center justify-center text-white text-center p-6 mb-6 animate-pulse" style={{ animationDuration: '3s' }}>
                   <div className="text-xs leading-tight">
                     <div className="font-medium mb-2">{t('hero.quote')}</div>
-                    <div className="text-[10px] opacity-80">{t('hero.quoteAuthor')}</div>
+                    {/* <div className="text-[10px] opacity-80">{t('hero.quoteAuthor')}</div> */}
                   </div>
                 </div>
-                <div className="absolute -bottom-2 left-16 w-6 h-6 border-2 border-primary rounded-full bg-white flex items-center justify-center">
+                <div className="absolute -bottom-2 left-16 w-6 h-6 border-2 border-primary rounded-full bg-white flex items-center justify-center animate-bounce" style={{ animationDuration: '2s' }}>
                   <div className="w-2 h-2 bg-primary rounded-full" />
                 </div>
               </div>
               
               {/* Intro Text */}
-              <div className="space-y-6 text-sm leading-relaxed text-dark/80">
+              <div className="space-y-6 text-sm leading-relaxed text-dark/80 animate-fadeIn" style={{ animationDelay: '0.5s' }}>
                 <p>
                   {t('hero.introText1')}
                 </p>
@@ -326,9 +319,9 @@ export default function Home() {
           <div className="w-[400px] h-full p-12 flex flex-col justify-center border-r border-gray-200 shrink-0">
             
             {/* Chapter Indicator */}
-            <div className="mb-8">
+            <div className="mb-8 animate-slideInLeft" style={{ animationDelay: '0.3s' }}>
               <div className="flex items-center space-x-4 mb-6">
-                <div className="w-8 h-8 border border-primary rounded-full flex items-center justify-center text-primary text-sm font-medium">
+                <div className="w-8 h-8 border border-primary rounded-full flex items-center justify-center text-primary text-sm font-medium hover:bg-primary hover:text-white transition-all duration-300">
                   4
                 </div>
                 <div className="text-xs uppercase tracking-[0.3em] text-earth">
@@ -337,17 +330,16 @@ export default function Home() {
               </div>
               
               <div className="space-y-2 text-xs text-dark/60">
-                <div>❶ {t('chapters.chapterList.1')}</div>
-                <div>❷ {t('chapters.chapterList.2')}</div>
-                <div>❸ {t('chapters.chapterList.3')}</div>
-                <div>❹ {t('chapters.chapterList.4')}</div>
-                <div>❺ {t('chapters.chapterList.5')}</div>
+                <div className="hover:text-primary transition-colors duration-200 cursor-default">❶ {t('chapters.chapterList.1')}</div>
+                <div className="hover:text-primary transition-colors duration-200 cursor-default">❷ {t('chapters.chapterList.2')}</div>
+                <div className="hover:text-primary transition-colors duration-200 cursor-default">❸ {t('chapters.chapterList.3')}</div>
+                <div className="hover:text-primary transition-colors duration-200 cursor-default">❹ {t('chapters.chapterList.4')}</div>
               </div>
             </div>
             
             {/* Main Headline */}
-            <div className="mb-8">
-              <h1 className="text-3xl font-bold leading-tight mb-4">
+            <div className="mb-8 animate-slideInUp" style={{ animationDelay: '0.6s' }}>
+              <h1 className="text-3xl font-bold leading-tight mb-4 hover:text-primary/90 transition-colors duration-300">
                 {t('hero.mainTitle')}
               </h1>
               
@@ -360,11 +352,12 @@ export default function Home() {
             <button
               onClick={handleTrailerClick}
               onKeyDown={handleKeyDown}
-              className="group flex items-center space-x-3 text-sm text-dark hover:text-primary transition-colors"
+              className="group flex items-center space-x-3 text-sm text-dark hover:text-primary transition-all duration-300 transform hover:translate-x-2 animate-fadeIn"
+              style={{ animationDelay: '0.9s' }}
               tabIndex={0}
               aria-label="Watch trailer"
             >
-              <div className="w-8 h-8 border border-current rounded-full flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all">
+              <div className="w-8 h-8 border border-current rounded-full flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all group-hover:rotate-12">
                 <svg className="w-3 h-3 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
@@ -376,13 +369,13 @@ export default function Home() {
           {/* Panel 3: Visual with Video Mockup */}
           <div className="w-[350px] h-full relative border-r border-gray-200 shrink-0">
             {/* Large Red Circle Accent */}
-            <div className="absolute top-16 right-8 w-40 h-40 bg-primary rounded-full opacity-90 z-10" />
+            <div className="absolute top-16 right-8 w-40 h-40 bg-primary rounded-full opacity-90 z-10 animate-float" style={{ animationDelay: '1s' }} />
             
             {/* Video Mockup Background */}
             <div className="h-full bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
               
               {/* Video Frame Mockup */}
-              <div className="absolute inset-8 bg-black rounded border-2 border-gray-600 overflow-hidden">
+              <div className="absolute inset-8 bg-black rounded border-2 border-gray-600 overflow-hidden animate-slideInUp" style={{ animationDelay: '0.7s' }}>
                 {/* Video Content Simulation */}
                 <div className="h-full bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 relative">
                   {/* Blockchain Network Visualization */}
@@ -391,18 +384,23 @@ export default function Home() {
                     <div className="absolute top-8 right-6 w-2 h-2 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
                     <div className="absolute bottom-6 left-8 w-2 h-2 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
                     <div className="absolute bottom-4 right-4 w-2 h-2 bg-orange-400 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+                    
+                    {/* Additional animated dots */}
+                    <div className="absolute top-1/2 left-1/3 w-1 h-1 bg-pink-400 rounded-full animate-pulse" style={{ animationDelay: '0.3s' }}></div>
+                    <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-yellow-400 rounded-full animate-pulse" style={{ animationDelay: '0.8s' }}></div>
+                    <div className="absolute bottom-1/3 left-1/2 w-1 h-1 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '1.3s' }}></div>
                   </div>
                   
                   {/* Video Overlay */}
-                  <div className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-sm p-3 rounded text-white">
+                  <div className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-sm p-3 rounded text-white animate-slideInUp" style={{ animationDelay: '1.2s' }}>
                     <div className="text-xs text-cyan-400 mb-1">{t('video.liveBlockchain')}</div>
                     <div className="text-[10px] text-white/80">{t('video.visualization')}</div>
                   </div>
                 </div>
                 
                 {/* Play Button Overlay */}
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer">
-                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-all duration-500 cursor-pointer">
+                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
                     <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z"/>
                     </svg>
@@ -411,30 +409,30 @@ export default function Home() {
               </div>
               
               {/* Documentary Preview Area */}
-              <div className="absolute inset-x-8 bottom-8 bg-white/95 backdrop-blur-sm p-6 border">
+              <div className="absolute inset-x-8 bottom-8 bg-white/95 backdrop-blur-sm p-6 border animate-fadeIn" style={{ animationDelay: '1.5s' }}>
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-primary/10 border border-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-primary/10 border border-primary/20 rounded-full flex items-center justify-center mx-auto mb-4 hover:bg-primary/20 hover:scale-105 transition-all duration-300">
                     <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z"/>
                     </svg>
                   </div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-earth mb-1">
+                  <div className="text-xs uppercase tracking-[0.2em] text-earth mb-1 hover:text-primary transition-colors duration-200">
                     {t('hero.preview')}
                   </div>
-                  <div className="text-[10px] text-dark/60 uppercase tracking-[0.2em]">
+                  <div className="text-[10px] text-dark/60 uppercase tracking-[0.2em] animate-pulse" style={{ animationDuration: '2s' }}>
                     {t('hero.comingSoon')}
                   </div>
                 </div>
               </div>
               
               {/* Corner Details */}
-              <div className="absolute top-4 left-4 w-3 h-3 border-l border-t border-white/20" />
-              <div className="absolute top-4 right-4 w-3 h-3 border-r border-t border-white/20" />
+              <div className="absolute top-4 left-4 w-3 h-3 border-l border-t border-white/20 animate-fadeIn" style={{ animationDelay: '2s' }} />
+              <div className="absolute top-4 right-4 w-3 h-3 border-r border-t border-white/20 animate-fadeIn" style={{ animationDelay: '2.2s' }} />
             </div>
             
             {/* Side Text */}
-            <div className="absolute right-0 top-1/2 transform -rotate-90 origin-center translate-x-6 text-[10px] tracking-[0.5em] text-white/60 uppercase whitespace-nowrap">
-              + Dušan Kuzma - Matica Slovenská
+            <div className="absolute right-0 top-1/2 transform -rotate-90 origin-center translate-x-6 text-[10px] tracking-[0.5em] text-white/60 uppercase whitespace-nowrap animate-fadeIn" style={{ animationDelay: '2.5s' }}>
+              Ethereum - A Global Story
             </div>
           </div>
           
