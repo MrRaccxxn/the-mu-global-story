@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "title": "Ethereum: A Global Story | Documentary Miniseries",
+    "description": "A documentary miniseries told in four chapters exploring Ethereum's impact on technology and society. Premiering at Expo 2025 Osaka."
+  },
+  "navigation": {
+    "documentary": "Documentary",
+    "aboutProject": "About project",
+    "languages": "EN / JP"
+  },
+  "hero": {
+    "quote": "What is the biggest story in technology today?",
+    "quoteAuthor": "— Documentary Team",
+    "introText1": "Blockchain technology emerged through various economic and financial crises. A revolutionary idea that has evolved into something that might fundamentally transform our understanding of digital ownership, decentralized governance, and global connectivity.",
+    "introText2": "Perhaps this will remain a transformative period where one crucial innovation becomes the foundation for the next era of human interaction with technology.",
+    "fourEpisodes": "Four Episodes",
+    "mainTitle": "ETHEREUM: A GLOBAL STORY",
+    "subtitle": "From economic crises to community building, exploring how Ethereum emerged as more than technology—as a movement reshaping our relationship with institutions, data, and the global economy.",
+    "watchTrailer": "Watch Trailer",
+    "preview": "Preview",
+    "comingSoon": "Coming 2025"
+  },
+  "chapters": {
+    "chapter": "Chapter",
+    "comingSoon": "Coming Soon",
+    "chapterList": {
+      "1": "The Spark",
+      "2": "Human Connection", 
+      "3": "The Dream",
+      "4": "Ethereum",
+      "5": "Documentary series"
+    },
+    "details": {
+      "1": {
+        "title": "The Spark",
+        "subtitle": "The Birth of Blockchain & the Fear of Chaos",
+        "description": "Blockchain emerged as a response to various economic, political, and social crises that eroded trust in traditional institutions. From hyperinflation in collapsing economies to financial censorship under authoritarian regimes, and excessive banking control during global crises, the need for a decentralized alternative became evident.",
+        "extendedDescription": "Countries facing massive devaluations, economic sanctions, rampant corruption, and restricted financial access fueled the development of a technology that offered transparency, security, and autonomy. However, its rapid rise in popularity also attracted speculation and misuse, generating fear and public distrust.",
+        "duration": "8:45",
+        "theme": "Economic Crisis"
+      },
+      "2": {
+        "title": "Human Connection",
+        "subtitle": "The Power of Ethereum's Community",
+        "description": "This episode explores the real stories behind Ethereum's community, one of the blockchains that most faithfully preserves the core philosophy behind the technology. Millions of people, driven by the conviction that they can reshape the world, have found in Ethereum more than just a platform.",
+        "extendedDescription": "It has become a shared home, fostering deep connections and real change. We'll dive into how this community has grown, the challenges it has faced, and the tangible impact this movement has had on their lives.",
+        "duration": "7:22",
+        "theme": "Community Building"
+      },
+      "3": {
+        "title": "The Dream",
+        "subtitle": "Shaping the Future",
+        "description": "Blockchain has the potential to redefine our relationship with institutions, data, and the economy. Beyond speculation, its adoption can bring structural changes that benefit society. This episode explores how the technology can work alongside governments to improve economies.",
+        "extendedDescription": "More than just a vision of the future, this is an invitation to be part of history. It's not about surrendering control, but about building on equal terms.",
+        "duration": "9:18",
+        "theme": "Future Vision"
+      },
+      "4": {
+        "title": "Ethereum",
+        "subtitle": "The Concept and the Impact",
+        "description": "This episode dives deep into the concept of Ethereum—its history, core mechanisms, and how it's being used to solve real-world problems. We begin with a narrative metaphor: a solarpunk city where mycelium represents blockchain.",
+        "extendedDescription": "From The DAO hack story revealing Ethereum's resilience to powerful use cases transforming lives through decentralized governance, finance, education, aid, and digital identity.",
+        "duration": "10:33",
+        "theme": "Ethereum Impact"
+      }
+    }
+  },
+  "about": {
+    "title": "Documentary Miniseries",
+    "description1": "Ethereum: A Global Story is a groundbreaking documentary miniseries that explores how Ethereum has transformed from a visionary idea into a global phenomenon reshaping technology, finance, and society.",
+    "description2": "Through four compelling chapters, we dive deep into the stories of developers, entrepreneurs, and communities who are building the decentralized future.",
+    "features": {
+      "premiere": "World Premiere at Expo 2025 Osaka",
+      "series": "Four-part documentary series",
+      "perspectives": "Global perspectives and stories"
+    }
+  },
+  "footer": {
+    "title": "Ethereum: A Global Story",
+    "description": "A documentary miniseries exploring Ethereum's transformative impact on technology and society, premiering at Expo 2025 Osaka.",
+    "premiere": "Premiere",
+    "expoDetails": "Expo 2025 Osaka\nApril 13 - October 13, 2025",
+    "stayConnected": "Stay Connected",
+    "scrollToExplore": "Scroll to explore",
+    "expoDate": "Expo 2025 Osaka / April 13 - October 13, 2025"
+  },
+  "video": {
+    "liveBlockchain": "LIVE: Blockchain Network",
+    "visualization": "Global transaction visualization"
+  },
+  "language": {
+    "switched": "Language switched to {{language}}!",
+    "english": "English",
+    "japanese": "Japanese",
+    "implementationNote": "(Full i18n implementation ready)",
+    "currentTooltip": "Current: {{current}} - Click to switch"
+  }
+} 

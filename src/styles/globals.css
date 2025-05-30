@@ -1,238 +1,100 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Rubik', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #ffffff;
+  color: #1e1e1e;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Scrollbar Utilities */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+/* Custom Gradients */
+.bg-gradient-radial {
+  background: radial-gradient(var(--tw-gradient-stops));
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+/* Removed problematic horizontal scroll optimizations */
 
 :root {
-  --glitch-blur: 2px;
-  --glitch-shift: 3px;
-  --eth-blue: #152456;
-  --eth-blue-dark: #0A132F;
-  --eth-orange: #E84C3D;
-  --eth-orange-light: #FF6B5B;
-  --eth-cream: #F5F5F0;
-  --neon-glow: 0 0 10px rgba(232, 76, 61, 0.8), 0 0 20px rgba(232, 76, 61, 0.6), 0 0 30px rgba(232, 76, 61, 0.4);
-  --post-it-yellow: #feff9c;
-  --post-it-blue: #7afcff;
-  --post-it-green: #b1ffa8;
-  --post-it-purple: #d2a8ff;
+  --rebel-orange: #F94D1B;
+  --geek-blue: #3661B4;
+  --elder-scrolls: #F5F3E7;
+  --earth: #7D4921;
+  --black: #1E1E1E;
 }
 
 /* Basic styles */
+html,
 body {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--eth-blue-dark);
-  overflow-x: hidden;
-  position: relative;
+  max-width: 100vw;
+  background-color: white;
+  color: var(--black);
+  line-height: 1.6;
 }
 
-/* Custom cursor */
-.cyberpunk-cursor {
-  cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 3L3 12H10V21H14V12H21L12 3Z' fill='%23E84C3D'/%3E%3C/svg%3E"), auto;
-}
-
-/* Matrix-like background effect */
-.matrix-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: 
-    linear-gradient(0deg, transparent 24%, rgba(232, 76, 61, 0.3) 25%, rgba(232, 76, 61, 0.3) 26%, transparent 27%, transparent 74%, rgba(232, 76, 61, 0.3) 75%, rgba(232, 76, 61, 0.3) 76%, transparent 77%, transparent),
-    linear-gradient(90deg, transparent 24%, rgba(232, 76, 61, 0.3) 25%, rgba(232, 76, 61, 0.3) 26%, transparent 27%, transparent 74%, rgba(232, 76, 61, 0.3) 75%, rgba(232, 76, 61, 0.3) 76%, transparent 77%, transparent);
-  background-size: 50px 50px;
-}
-
-/* Glitch effect for text */
+/* Button base styles */
 @layer components {
-  .glitch-text {
-    position: relative;
-    display: inline-block;
+  .btn-primary {
+    @apply bg-rebel-orange text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-rebel-orange focus:ring-opacity-50;
   }
   
-  .glitch-text::before,
-  .glitch-text::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.8;
+  .btn-secondary {
+    @apply bg-geek-blue text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-geek-blue focus:ring-opacity-50;
   }
   
-  .glitch-text::before {
-    animation: glitch-b 1.5s infinite alternate-reverse;
-    color: var(--eth-orange);
-    left: var(--glitch-shift);
-    text-shadow: calc(-1 * var(--glitch-shift)) 0 var(--glitch-blur) var(--eth-blue);
-    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%, 0 55%, 100% 55%, 100% 100%, 0 100%);
-  }
-  
-  .glitch-text::after {
-    animation: glitch-a 1s infinite linear alternate-reverse;
-    color: var(--eth-orange-light);
-    left: calc(-1 * var(--glitch-shift));
-    text-shadow: var(--glitch-shift) 0 var(--glitch-blur) var(--eth-blue-dark);
-    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%, 0 65%, 100% 65%, 100% 100%, 0 100%);
-  }
-  
-  @keyframes glitch-a {
-    0% {
-      clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%, 0 65%, 100% 65%, 100% 100%, 0 100%);
-    }
-    50% {
-      clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%, 0 63%, 100% 63%, 100% 100%, 0 100%);
-    }
-    100% {
-      clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%, 0 65%, 100% 65%, 100% 100%, 0 100%);
-    }
-  }
-  
-  @keyframes glitch-b {
-    0% {
-      clip-path: polygon(0 40%, 100% 40%, 100% 45%, 0 45%, 0 55%, 100% 55%, 100% 70%, 0 70%);
-    }
-    50% {
-      clip-path: polygon(0 42%, 100% 42%, 100% 45%, 0 45%, 0 55%, 100% 55%, 100% 68%, 0 68%);
-    }
-    100% {
-      clip-path: polygon(0 45%, 100% 45%, 100% 45%, 0 45%, 0 55%, 100% 55%, 100% 65%, 0 65%);
-    }
-  }
-  
-  /* Neon text effect */
-  .neon-text {
-    color: var(--eth-cream);
-    text-shadow: var(--neon-glow);
-    transition: text-shadow 0.3s ease;
-  }
-  
-  .neon-text:hover {
-    text-shadow: 0 0 20px rgba(232, 76, 61, 0.8), 0 0 40px rgba(232, 76, 61, 0.6), 0 0 60px rgba(232, 76, 61, 0.4);
-  }
-  
-  /* Post-it notes effect */
-  .post-it {
-    background-color: var(--post-it-yellow);
-    padding: 1rem;
-    transform: rotate(calc(var(--random-rotate, 0) * 1deg));
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    position: relative;
-  }
-  
-  .post-it:hover {
-    transform: rotate(calc(var(--random-rotate, 0) * 1deg)) scale(1.05);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-  }
-  
-  .post-it-yellow { background-color: var(--post-it-yellow); }
-  .post-it-blue { background-color: var(--post-it-blue); }
-  .post-it-green { background-color: var(--post-it-green); }
-  .post-it-purple { background-color: var(--post-it-purple); }
-  
-  /* Scanlines effect */
-  .scanlines {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 15;
-    opacity: 0.1;
-    background: linear-gradient(
-      to bottom,
-      transparent 50%,
-      rgba(0, 0, 0, 0.5) 51%
-    );
-    background-size: 100% 4px;
-  }
-  
-  /* CRT flicker animation */
-  .crt-flicker {
-    animation: flicker 0.15s infinite;
-  }
-  
-  @keyframes flicker {
-    0% { opacity: 1; }
-    50% { opacity: 0.98; }
-    100% { opacity: 1; }
-  }
-  
-  /* Animate floating */
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-15px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
-  }
-  
-  /* Glitch button */
-  .glitch-button {
-    position: relative;
-    overflow: hidden;
-    color: var(--eth-cream);
-    background-color: var(--eth-blue);
-    border: 1px solid var(--eth-orange);
-    transition: all 0.3s ease;
-  }
-  
-  .glitch-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(232, 76, 61, 0.2),
-      transparent
-    );
-    transition: all 0.6s ease;
-  }
-  
-  .glitch-button:hover::before {
-    left: 100%;
-  }
-  
-  .glitch-button:hover {
-    box-shadow: 0 0 10px rgba(232, 76, 61, 0.8);
-    background-color: var(--eth-blue-dark);
+  .btn-outline {
+    @apply border-2 border-rebel-orange text-rebel-orange px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-rebel-orange hover:text-white focus:outline-none focus:ring-2 focus:ring-rebel-orange focus:ring-opacity-50;
   }
 }
 
-/* Custom scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+/* Text selection */
+::selection {
+  background-color: var(--rebel-orange);
+  color: white;
 }
 
-::-webkit-scrollbar-track {
-  background: #0A132F;
+/* Focus styles */
+a:focus,
+button:focus {
+  outline: 2px solid var(--rebel-orange);
+  outline-offset: 2px;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #E84C3D;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #FF6B5B;
+/* Image optimization */
+img {
+  max-width: 100%;
+  height: auto;
 }
