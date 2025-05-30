@@ -5,6 +5,7 @@ module.exports = {
     locales: ['en', 'ja'],
     localeDetection: false,
   },
+  localePath: './public/i18n',
   react: {
     useSuspense: false,
   },
