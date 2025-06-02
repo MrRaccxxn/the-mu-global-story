@@ -1,3 +1,13 @@
 {
-  "trailingSlash": true
+  "trailingSlash": true,
+  "functions": {
+    "src/pages/**/*.tsx": {
+      "includeFiles": "public/locales/**"
+    }
+  },
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_LOCALE_PATH": "public/locales"
+    }
+  }
 } 

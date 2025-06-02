@@ -8,4 +8,6 @@ module.exports = {
   react: {
     useSuspense: false,
   },
+  fallbackLng: 'en',
+  debug: false,
 }; 
