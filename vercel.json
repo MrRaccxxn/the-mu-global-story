@@ -5,9 +5,6 @@
       "includeFiles": "public/locales/**/*.json"
     }
   },
-  "public": {
-    "locales": true
-  },
   "build": {
     "env": {
       "NEXT_I18NEXT_LOCAL_PATH": "./public/locales"
