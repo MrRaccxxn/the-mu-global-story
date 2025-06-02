@@ -2,12 +2,15 @@
   "trailingSlash": true,
   "functions": {
     "src/pages/**/*.tsx": {
-      "includeFiles": "public/locales/**"
+      "includeFiles": "public/locales/**/*.json"
     }
+  },
+  "public": {
+    "locales": true
   },
   "build": {
     "env": {
-      "NEXT_PUBLIC_LOCALE_PATH": "public/locales"
+      "NEXT_I18NEXT_LOCAL_PATH": "./public/locales"
     }
   }
 } 

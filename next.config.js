@@ -7,6 +7,15 @@ const nextConfig = {
   swcMinify: true,
   trailingSlash: true,
   i18n,
+  // Ensure public directory assets are properly served
+  async rewrites() {
+    return [
+      {
+        source: '/locales/:path*',
+        destination: '/locales/:path*',
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig; 

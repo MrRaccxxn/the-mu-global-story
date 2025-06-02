@@ -3,6 +3,8 @@ import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
+import path from 'path';
+import fs from 'fs';
 
 import TrailerModal from '../components/TrailerModal';
 
@@ -648,10 +650,14 @@ export default function Home() {
 export const getServerSideProps = async ({ locale }: { locale: string }) => {
   // Debug logging for production
   console.log('getServerSideProps called with locale:', locale);
+  console.log('Process cwd:', process.cwd());
+  console.log('Locale path should be:', path.resolve(process.cwd(), 'public/locales'));
   
   try {
-    const translations = await serverSideTranslations(locale || 'en', ['common']);
-    console.log('Translations loaded successfully for locale:', locale);
+    const currentLocale = locale || 'en';
+    const translations = await serverSideTranslations(currentLocale, ['common']);
+    console.log('Translations loaded successfully for locale:', currentLocale);
+    console.log('Translation keys:', Object.keys(translations._nextI18Next?.initialI18nStore?.[currentLocale]?.common || {}));
     
     return {
       props: {
@@ -659,12 +665,30 @@ export const getServerSideProps = async ({ locale }: { locale: string }) => {
       },
     };
   } catch (error) {
-    console.error('Error loading translations:', error);
-    // Fallback to English if there's an error
-    const fallbackTranslations = await serverSideTranslations('en', ['common']);
+    const errorObj = error as Error;
+    console.error('Error loading translations:', errorObj);
+    console.error('Error details:', {
+      message: errorObj.message,
+      stack: errorObj.stack,
+      cwd: process.cwd(),
+      localeExists: fs.existsSync(path.resolve(process.cwd(), 'public/locales', locale || 'en', 'common.json'))
+    });
+    
+    // Return empty translations to prevent build failure
     return {
       props: {
-        ...fallbackTranslations,
+        _nextI18Next: {
+          initialI18nStore: { [locale || 'en']: { common: {} } },
+          initialLocale: locale || 'en',
+          ns: ['common'],
+          userConfig: {
+            i18n: {
+              defaultLocale: 'en',
+              locales: ['en', 'ja'],
+              localeDetection: false,
+            },
+          },
+        },
       },
     };
   }
