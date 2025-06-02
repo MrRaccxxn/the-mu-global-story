@@ -646,9 +646,26 @@ export default function Home() {
 }
 
 export const getServerSideProps = async ({ locale }: { locale: string }) => {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common'])),
-    },
-  };
+  // Debug logging for production
+  console.log('getServerSideProps called with locale:', locale);
+  
+  try {
+    const translations = await serverSideTranslations(locale || 'en', ['common']);
+    console.log('Translations loaded successfully for locale:', locale);
+    
+    return {
+      props: {
+        ...translations,
+      },
+    };
+  } catch (error) {
+    console.error('Error loading translations:', error);
+    // Fallback to English if there's an error
+    const fallbackTranslations = await serverSideTranslations('en', ['common']);
+    return {
+      props: {
+        ...fallbackTranslations,
+      },
+    };
+  }
 };

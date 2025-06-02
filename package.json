@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "mkdir -p public/locales/en public/locales/ja && cp src/locales/en/common.json public/locales/en/ && cp src/locales/ja/common.json public/locales/ja/",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

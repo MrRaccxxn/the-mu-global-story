@@ -4,7 +4,7 @@ module.exports = {
     locales: ['en', 'ja'],
     localeDetection: false,
   },
-  localePath: './src/locales',
+  localePath: './public/locales',
   react: {
     useSuspense: false,
   },
